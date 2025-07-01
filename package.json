@@ -21,6 +21,7 @@
     "@radix-ui/react-tooltip": "^1.2.7",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "jwt-decode": "^4.0.0",
     "livekit-client": "^2.14.0",
     "livekit-server-sdk": "^2.13.1",
     "lucide-react": "^0.523.0",
@@ -32,6 +33,7 @@
     "sonner": "^2.0.5",
     "tailwind-merge": "^3.3.1",
     "usehooks-ts": "^3.1.1",
+    "uuid": "^11.1.0",
     "zustand": "^5.0.5"
   },
   "devDependencies": {
