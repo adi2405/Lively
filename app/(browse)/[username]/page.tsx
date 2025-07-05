@@ -11,9 +11,8 @@ interface UserPageProps {
   };
 }
 
-// ts-expect-error
 const UserPage = async ({ params }: UserPageProps) => {
-  const { username } = await params;
+  const { username } = params;
   const user = await getUserByUsername(username);
 
   if (!user || !user.stream) {
