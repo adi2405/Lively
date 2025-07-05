@@ -7,7 +7,7 @@ export const getRecommended = async () => {
   try {
     const self = await getSelf();
     userId = self.id;
-  } catch (_) {
+  } catch {
     userId = null;
   }
 

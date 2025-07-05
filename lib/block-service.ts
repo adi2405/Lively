@@ -29,7 +29,7 @@ export const isBlockedByUser = async (id: string) => {
     });
 
     return !!existingBlock;
-  } catch (_) {
+  } catch {
     return false;
   }
 };
