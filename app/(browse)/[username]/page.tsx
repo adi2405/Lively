@@ -5,14 +5,9 @@ import { isFollowingUser } from "@/lib/follow-service";
 import { isBlockedByUser } from "@/lib/block-service";
 import { StreamPlayer } from "@/components/stream-player";
 
-interface UserPageProps {
-  params: {
-    username: string;
-  };
-}
-
-const UserPage = async ({ params }: UserPageProps) => {
-  const user = await getUserByUsername(params.username);
+const UserPage = async ({ params }: { params: { username: string } }) => {
+  const { username } = params;
+  const user = await getUserByUsername(username);
 
   if (!user || !user.stream) {
     notFound();
