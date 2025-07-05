@@ -6,6 +6,7 @@ const isPublicRoute = createRouteMatcher([
   "/api/webhooks(.*)",
   "/api/uploadthing(.*)",
   "/:username",
+  "/search",
   "/",
 ]);
 
