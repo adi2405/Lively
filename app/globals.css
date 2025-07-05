@@ -3,12 +3,11 @@
 
 @import "uploadthing/tw/v4";
 
-
 html,
 body,
 :root {
   height: 100%;
-  @apply bg-neutral-900/80;
+  background-color: #171717;
 }
 
 .hidden-scrollbar {

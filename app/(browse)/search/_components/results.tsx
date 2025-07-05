@@ -1,18 +1,21 @@
-import { getStreams } from "@/lib/feed-service";
-
-import { ResultCard, ResultCardSkeleton } from "./result-card";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getSearch } from "@/lib/search-service";
+import { ResultCard, ResultCardSkeleton } from "./result-card";
 
-export const Results = async () => {
-  const data = await getStreams();
+interface ResultsProps {
+  term?: string;
+}
+
+export const Results = async ({ term }: ResultsProps) => {
+  const data = await getSearch(term);
 
   return (
     <div>
-      <h2 className="text-lg font-semibold mb-4">
-        Streams we think you might like
-      </h2>
+      <h2 className="text-lg font-semibold mb-4">Results for term "{term}"</h2>
       {data.length === 0 && (
-        <div className="text-muted-foreground text-base">No streams found</div>
+        <p className="text-muted-foreground text-base">
+          No results found. Try searching for something else.
+        </p>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-x-4 gap-y-8">
         {data.map((result) => (

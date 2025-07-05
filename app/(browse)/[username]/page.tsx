@@ -27,11 +27,7 @@ const UserPage = async ({ params }: UserPageProps) => {
   }
 
   return (
-    <StreamPlayer
-      user={user}
-      stream={user.stream}
-      isFollowing={isFollowing}
-    />
+    <StreamPlayer user={user} stream={user.stream} isFollowing={isFollowing} />
   );
 };
 

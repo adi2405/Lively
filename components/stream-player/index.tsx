@@ -14,9 +14,28 @@ import { ChatToggle } from "./chat-toggle";
 import { InfoCard } from "./info-card";
 import { AboutCard } from "./about-card";
 
+type CustomStream = {
+  id: string;
+  name: string;
+  isLive: boolean;
+  thumbnailUrl: string | null;
+  isChatEnabled: boolean;
+  isChatDelayed: boolean;
+  isChatFollowersOnly: boolean;
+};
+
+type CustomUser = {
+  id: string;
+  bio: string | null;
+  username: string;
+  imageUrl: string;
+  stream: CustomStream | null;
+  _count: { followedBy: number };
+};
+
 interface StreamPlayerProps {
-  user: User & { stream: Stream | null; _count: { followedBy: number } };
-  stream: Stream;
+  user: CustomUser;
+  stream: CustomStream;
   isFollowing: boolean;
 }
 

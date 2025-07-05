@@ -1,17 +1,13 @@
 import Link from "next/link";
+import { Stream, User } from "@prisma/client";
+import { formatDistanceToNow } from "date-fns";
 
-import { User } from "@prisma/client";
-import { Thumbnail, ThumbnailSkeleton } from "@/components/thumbnail";
 import { Skeleton } from "@/components/ui/skeleton";
-import { UserAvatar, UserAvatarSkeleton } from "@/components/user-avatar";
+import { Thumbnail, ThumbnailSkeleton } from "@/components/thumbnail";
+import { VerifiedMark } from "@/components/verified-mark";
 
 interface ResultCardProps {
-  data: {
-    user: User;
-    isLive: boolean;
-    name: string;
-    thumbnailUrl: string | null;
-  };
+  data: Stream & { user: User };
 }
 
 export const ResultCard = ({ data }: ResultCardProps) => {
@@ -25,16 +21,19 @@ export const ResultCard = ({ data }: ResultCardProps) => {
           username={data.user.username}
         />
         <div className="flex items-center gap-x-3">
-          <UserAvatar
-            username={data.user.username}
-            imageUrl={data.user.imageUrl}
-            isLive={data.isLive}
-          />
           <div className="flex flex-col text-sm overflow-hidden">
-            <p className="truncate text-lg font-bold hover:text-purple-500">
-              {data.name}
+            <div className="flex items-center gap-x-2">
+              <p className="truncate font-bold text-lg cursor-pointer hover:text-purple-500">
+                {data.user.username}
+              </p>
+              <VerifiedMark />
+            </div>
+            <p className="text-sm text-muted-foreground">{data.name}</p>
+            <p className="text-sm text-muted-foreground">
+              {formatDistanceToNow(new Date(data.updatedAt), {
+                addSuffix: true,
+              })}
             </p>
-            <p className="text-muted-foreground">{data.user.username}</p>
           </div>
         </div>
       </div>
@@ -47,10 +46,10 @@ export const ResultCardSkeleton = () => {
     <div className="h-full w-full space-y-4">
       <ThumbnailSkeleton />
       <div className="flex gap-x-3">
-        <UserAvatarSkeleton />
         <div className="flex flex-col gap-y-1 w-full">
           <Skeleton className="h-4 w-3/4 sm:w-32" />
           <Skeleton className="h-3 w-1/2 sm:w-24" />
+          <Skeleton className="h-3 w-1/4 sm:w-12" />
         </div>
       </div>
     </div>
