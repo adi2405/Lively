@@ -3,13 +3,11 @@ import { redirect } from "next/navigation";
 
 import { Results, ResultsSkeleton } from "./_components/results";
 
-interface SearchPageProps {
-  searchParams: {
-    term?: string;
-  };
-}
-
-const SearchPage = async ({ searchParams }: SearchPageProps) => {
+export default async function SearchPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ term?: string }>;
+}) {
   const { term } = await searchParams;
 
   if (!term) {
@@ -23,6 +21,4 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
       </Suspense>
     </div>
   );
-};
-
-export default SearchPage;
+}
