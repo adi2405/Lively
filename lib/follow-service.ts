@@ -29,7 +29,7 @@ export const getFollowedUsers = async () => {
       },
     });
     return followedUsers;
-  } catch (error) {
+  } catch (_) {
     return [];
   }
 };
@@ -60,7 +60,7 @@ export const isFollowingUser = async (id: string) => {
     });
 
     return !!existingFollow;
-  } catch (error) {
+  } catch (_) {
     return false;
   }
 };

@@ -5,7 +5,7 @@ const NotFound = () => {
   return (
     <div className="h-full flex flex-col space-y-4 items-center justify-center text-muted-foreground">
       <h1 className="text-4xl">404</h1>
-      <p>We couldn't find the page you are looking for.</p>
+      <p>We couldn&apos;t find the page you are looking for.</p>
       <Button variant={"secondary"} asChild>
         <Link href={"/"}>Go back home</Link>
       </Button>

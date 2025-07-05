@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useSidebar } from "@/store/use-sidebar";
 import { UserAvatar } from "@/components/user-avatar";
-import { VariantProps } from "class-variance-authority";
 import { LiveBadge } from "@/components/live-badge";
 
 interface UserItemProps {

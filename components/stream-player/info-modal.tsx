@@ -95,7 +95,7 @@ export const InfoModal = ({
               Note
             </AlertTitle>
             <AlertDescription>
-              Make sure to click on "Upload file" after choosing thumbnail to
+              Make sure to click on &quot;Upload file&quot; after choosing thumbnail to
               successfully upload it.
             </AlertDescription>
           </Alert>
