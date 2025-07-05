@@ -21,13 +21,13 @@ export const onBlock = async (id: string) => {
     try {
       blockedUser = await blockUser(id);
     } catch (error) {
-      // this means the user is a guest
+      throw new Error("Internal Error!");
     }
 
     try {
       await roomService.removeParticipant(self.id, id);
     } catch (error) {
-      // this means user is not in the room
+      throw new Error("Internal Error!");
     }
 
     revalidatePath(`/u/${self.username}/community`);
