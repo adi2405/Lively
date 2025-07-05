@@ -12,7 +12,7 @@ interface UserPageProps {
 }
 
 const UserPage = async ({ params }: UserPageProps) => {
-  const { username } = params;
+  const { username } = await params;
   const user = await getUserByUsername(username);
 
   if (!user || !user.stream) {
