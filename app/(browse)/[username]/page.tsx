@@ -5,14 +5,13 @@ import { isFollowingUser } from "@/lib/follow-service";
 import { isBlockedByUser } from "@/lib/block-service";
 import { StreamPlayer } from "@/components/stream-player";
 
-interface UserPageProps {
-  params: {
-    username: string;
-  };
-}
+export default async function UserPage({
+  params,
+}: {
+  params: Promise<{ username: string }>;
+}) {
+  const { username } = await params;
 
-const UserPage = async ({ params }: UserPageProps) => {
-  const { username } = params;
   const user = await getUserByUsername(username);
 
   if (!user || !user.stream) {
@@ -29,6 +28,4 @@ const UserPage = async ({ params }: UserPageProps) => {
   return (
     <StreamPlayer user={user} stream={user.stream} isFollowing={isFollowing} />
   );
-};
-
-export default UserPage;
+}
